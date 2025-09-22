@@ -18,8 +18,8 @@ import {useNavigate} from "react-router-dom";
 
 
 const formSchema = z.object({
-    username: z.string().min(2).max(50),
-    password: z.string().min(8, {message: "Password is too short"})
+    username: z.string().max(50),
+    password: z.string().min(6, {message: "Password is too short"})
 })
 
 export default function Login() {
@@ -67,7 +67,7 @@ export default function Login() {
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
-                                <InputComponent className="w-96" title="Password" placeholder="***" type="password" {...field}>
+                                <InputComponent className="w-96" title="Password" placeholder="****" type="password" {...field}>
                                     <KeyRound className="w-4 h-4"/>
                                 </InputComponent>
                             </FormControl>

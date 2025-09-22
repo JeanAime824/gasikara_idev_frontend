@@ -14,7 +14,7 @@ const AuthContext = createContext<UserContextType | undefined>(undefined)
 
 
 /** URL backend django **/
-const API_URL = "http://localhost:8000/"
+const API_URL = "http://127.0.0.1:8000/"
 
 
 export const AuthProvider = ({children}: {children: ReactNode}) => {
@@ -34,16 +34,29 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
     }, []);
 
     /** Fonction pour se connecter **/
-    async function login(credentials: {username: string; password: string}) {
-        try{
-            const result = await axios.post(`${API_URL}/login`, credentials)
-            setAuthState({token: result.data.token, authenticated: true})
-            setUser(result.data.user)
-            localStorage.setItem("token", result.data.token)
-            document.cookie = `token=${result.data.token}; path=/`
-            axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.token}`
-        }catch (error){
-            console.log(error)
+    async function login(credentials: { username: string; password: string }) {
+        try {
+            const { data } = await axios.post(`${API_URL}/auth/login`, credentials);
+
+            setAuthState({ token: data.token, authenticated: true });
+            setUser(data.user);
+
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+            document.cookie = `token=${data.token}; path=/`;
+            axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
+
+            return { ok: true };
+        } catch (err: any) {
+            setAuthState({ token: null, authenticated: false });
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            delete axios.defaults.headers.common["Authorization"];
+            document.cookie = "token=; Max-Age=0; path=/";
+
+            const message = err?.response?.data?.error
+            return { ok: false, message };
         }
     }
 
@@ -53,9 +66,11 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
             const result = await axios.post(`${API_URL}/register`, newUser)
             setAuthState({token: result.data.token, authenticated: true})
             setUser(result.data.user)
+
             localStorage.setItem("token", result.data.token)
             document.cookie = `token=${result.data.token}; path=/`
             axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.token}`
+
         }catch (error){
             console.log(error)
         }

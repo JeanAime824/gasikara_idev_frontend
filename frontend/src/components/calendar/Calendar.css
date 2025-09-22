@@ -1,0 +1,216 @@
+/* Styles personnalisés pour le calendrier */
+.custom-calendar {
+  padding: 1rem;
+}
+
+/* Styles pour les événements */
+.fc-event {
+  border-radius: 6px !important;
+  border: none !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  padding: 2px 6px !important;
+  margin: 1px 0 !important;
+}
+
+.fc-event-main {
+  padding: 0 !important;
+}
+
+.fc-event-time {
+  font-weight: 600 !important;
+  margin-right: 4px !important;
+}
+
+.fc-event-title {
+  font-weight: 500 !important;
+}
+
+/* Couleurs des événements */
+.fc-bg-danger {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+.fc-bg-success {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+.fc-bg-primary {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.fc-bg-warning {
+  background-color: #f59e0b !important;
+  color: white !important;
+}
+
+/* Styles pour les boutons du calendrier */
+.fc-button {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  border: 1px solid #e5e7eb !important;
+  background-color: #ffffff !important;
+  color: #374151 !important;
+  transition: all 0.2s ease !important;
+}
+
+.fc-button:hover {
+  background-color: #f9fafb !important;
+  border-color: #d1d5db !important;
+}
+
+.fc-button:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+.fc-button-primary {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.fc-button-primary:hover {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.fc-button-active {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+  color: white !important;
+}
+
+/* Styles pour l'en-tête du calendrier */
+.fc-toolbar {
+  margin-bottom: 1.5rem !important;
+  padding: 0 0.5rem !important;
+}
+
+.fc-toolbar-title {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+}
+
+/* Styles pour les cellules du calendrier */
+.fc-daygrid-day {
+  border-color: #e5e7eb !important;
+}
+
+.fc-daygrid-day:hover {
+  background-color: #f9fafb !important;
+}
+
+.fc-daygrid-day-number {
+  font-weight: 500 !important;
+  color: #374151 !important;
+  padding: 8px !important;
+}
+
+.fc-day-today {
+  background-color: #eff6ff !important;
+}
+
+.fc-day-today .fc-daygrid-day-number {
+  background-color: #3b82f6 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 4px !important;
+}
+
+/* Styles pour les en-têtes des jours */
+.fc-col-header-cell {
+  background-color: #f8fafc !important;
+  border-color: #e5e7eb !important;
+  padding: 12px 8px !important;
+}
+
+.fc-col-header-cell-cushion {
+  font-weight: 600 !important;
+  color: #374151 !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Styles pour le mode sombre */
+.dark .fc-toolbar-title {
+  color: #f9fafb !important;
+}
+
+.dark .fc-button {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+.dark .fc-button:hover {
+  background-color: #4b5563 !important;
+  border-color: #6b7280 !important;
+}
+
+.dark .fc-daygrid-day {
+  border-color: #374151 !important;
+}
+
+.dark .fc-daygrid-day:hover {
+  background-color: #374151 !important;
+}
+
+.dark .fc-daygrid-day-number {
+  color: #f9fafb !important;
+}
+
+.dark .fc-col-header-cell {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+.dark .fc-col-header-cell-cushion {
+  color: #f9fafb !important;
+}
+
+.dark .fc-day-today {
+  background-color: #1e3a8a !important;
+}
+
+/* Styles pour les événements en mode sombre */
+.dark .fc-event {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .custom-calendar {
+    padding: 0.5rem;
+  }
+  
+  .fc-toolbar {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .fc-toolbar-chunk {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  .fc-button {
+    font-size: 0.875rem !important;
+    padding: 6px 12px !important;
+  }
+  
+  .fc-toolbar-title {
+    font-size: 1.25rem !important;
+  }
+}

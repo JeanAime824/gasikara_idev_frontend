@@ -14,7 +14,7 @@ export default function LoginPage(){
                     className=" object-cover w-full h-full"
                 />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/50 backdrop:blur-sm text-center p-8 mx-auto w-full max-w-11/12">
-                    <h1 className="text-4xl font-extrabold text-white mb-4">BIENVENUE SUR COMPUS CONNECT</h1>
+                    <h1 className="text-2xl font-extrabold text-white mb-4">BIENVENUE SUR COMPUS CONNECT</h1>
                     <p className="text-lg text-white">
                         Veuillez vous authentifier pour accéder à votre tableau de bord
                     </p>
