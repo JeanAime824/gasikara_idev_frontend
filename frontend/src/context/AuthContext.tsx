@@ -4,10 +4,13 @@ import axios from "axios";
 
 interface UserContextType{
     user: User | null;
-    onLogin: (credentials: {username: string, password: string}) => Promise<void>;
+    onLogin: (credentials: {username: string, password: string}) => Promise<{ ok: boolean; message?: string }>;
     onRegister: (newUser: { username: string, password: string }) => Promise<void>;
     onLogout: () => void;
     authState?: {token: string | null, authenticated: boolean | null}
+    hasRole: (role: "ADMIN" | "MANAGER") => boolean;
+    selectedRole: "ADMIN" | "MANAGER" | null;
+    setSelectedRole: (role: "ADMIN" | "MANAGER" | null) => void;
 }
 
 const AuthContext = createContext<UserContextType | undefined>(undefined)
@@ -21,6 +24,7 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
 
     const [authState, setAuthState] = useState<{token: string | null, authenticated: boolean | null}>({token: null, authenticated: false})
     const [user, setUser] = useState<User | null>(null)
+    const [selectedRole, setSelectedRole] = useState<"ADMIN" | "MANAGER" | null>(null)
 
 
     /** Vérifier l'état de la connexion au chargement si un token est déjà enregistré **/
@@ -88,12 +92,19 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
         }
     }
 
+    function hasRole(role: "ADMIN" | "MANAGER"){
+        return user?.role === role
+    }
+
     const values = {
         user,
         onLogin: login,
         onRegister: register,
         onLogout: logout,
-        authState
+        hasRole,
+        authState,
+        selectedRole,
+        setSelectedRole
     }
 
     return(

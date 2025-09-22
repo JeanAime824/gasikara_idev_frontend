@@ -4,4 +4,5 @@ export type User = {
     username: string,
     password: string,
     user_type: string,
+    role: "ADMIN" | "MANAGER"
 }

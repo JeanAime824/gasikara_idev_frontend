@@ -24,7 +24,7 @@ const formSchema = z.object({
 
 export default function Login() {
 
-    const {onLogin} = UseAuth()
+    const {onLogin, hasRole, selectedRole, setSelectedRole} = UseAuth()
     const navigate = useNavigate()
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -36,10 +36,31 @@ export default function Login() {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        await onLogin({
+        const result = await onLogin({
             username: values.username,
             password: values.password
         })
+        if(!result.ok){
+            window.alert(result.message ?? "Identifiants invalides")
+            return
+        }
+
+        if(!selectedRole){
+            window.alert("Veuillez sélectionner un rôle (Admin ou Manager)")
+            return
+        }
+
+        if(!hasRole(selectedRole)){
+            window.alert("Le rôle sélectionné ne correspond pas à votre compte")
+            return
+        }
+
+        if(selectedRole === "ADMIN"){
+            navigate("/dashboard")
+            return
+        }
+
+        // Par défaut, si Manager: ajustez la destination si besoin
         navigate("/dashboard")
     }
 
@@ -47,6 +68,7 @@ export default function Login() {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 h-full flex flex-col items-center justify-center rounded-xl">
                 <h1 className="text-2xl font-bold text-black">Login Page</h1>
+
                 <FormField
                     control={form.control}
                     name="username"
@@ -75,6 +97,28 @@ export default function Login() {
                         </FormItem>
                     )}
                 />
+                <div className="w-96 flex flex-col items-center justify-between gap-4">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                            type="radio"
+                            name="role"
+                            value="ADMIN"
+                            checked={selectedRole === "ADMIN"}
+                            onChange={() => setSelectedRole("ADMIN")}
+                        />
+                        <span>Admin</span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                            type="radio"
+                            name="role"
+                            value="MANAGER"
+                            checked={selectedRole === "MANAGER"}
+                            onChange={() => setSelectedRole("MANAGER")}
+                        />
+                        <span>Manager</span>
+                    </label>
+                </div>
                 <Button type="submit">Se connecter</Button>
             </form>
         </Form>

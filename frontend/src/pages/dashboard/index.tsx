@@ -2,9 +2,11 @@
 import MainDashboard from "@/components/section/MainDashboard";
 import {SidebarProvider, SidebarTrigger, useSidebar} from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/navigation/app-sidebar";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Menu, Bell, Search, Settings, UserRound } from "lucide-react";
 import InputComponent from "@/components/InputComponent.tsx";
+import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export default function Dashboard() {
     return (
@@ -66,9 +68,9 @@ function DashboardContent() {
                                         3
                                     </span>
                                 </Button>
-                                <Button variant="ghost" size="sm" className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <Link to="/profile" className={cn(buttonVariants({variant: "ghost"}), "p-2 hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                     <UserRound/>
-                                </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

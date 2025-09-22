@@ -21,7 +21,7 @@ const MainDashboard = () => {
             change: "+3%",
             changeType: "positive",
             icon: GraduationCap,
-            color: "bg-green-500",
+            color: "bg-blue-500",
             bgColor: "bg-green-50 dark:bg-green-900/20",
             textColor: "text-green-600 dark:text-green-400"
         },
@@ -31,7 +31,7 @@ const MainDashboard = () => {
             change: "+5%",
             changeType: "positive",
             icon: BookOpen,
-            color: "bg-purple-500",
+            color: "bg-blue-500",
             bgColor: "bg-purple-50 dark:bg-purple-900/20",
             textColor: "text-purple-600 dark:text-purple-400"
         },
@@ -41,7 +41,7 @@ const MainDashboard = () => {
             change: "+2.1%",
             changeType: "positive",
             icon: Award,
-            color: "bg-orange-500",
+            color: "bg-blue-500",
             bgColor: "bg-orange-50 dark:bg-orange-900/20",
             textColor: "text-orange-600 dark:text-orange-400"
         }
@@ -63,7 +63,7 @@ const MainDashboard = () => {
                     return (
                         <CardForm 
                             key={index}
-                            className={`${stat.bgColor} border-0 shadow-sm stats-card p-5 md:p-6`}
+                            className={` border-0 shadow-sm stats-card p-5 md:p-6`}
                             title={stat.title}
                         >
                             <div className="flex items-center">
@@ -89,7 +89,7 @@ const MainDashboard = () => {
                 {/* Chart Section */}
                 <div className="lg:col-span-2">
                     <CardForm 
-                        className="bg-white dark:bg-gray-800 border-0 shadow-sm chart-container p-5 md:p-6"
+                        className="bg-white dark:bg-gray-800 border-0 shadow-sm p-5 md:p-6"
                         title="Tendances d'inscription"
                     >
                         <div className="h-80 w-full">
@@ -128,47 +128,7 @@ const MainDashboard = () => {
 
             {/* Quick Actions */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                    <CardForm 
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 shadow-sm quick-action-card cursor-pointer p-5 md:p-6"
-                        title="Gérer les étudiants"
-                    >
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <p className="text-blue-100 text-sm">Ajouter, modifier ou supprimer</p>
-                            </div>
-                            <UsersRound className="w-8 h-8 text-blue-200" />
-                        </div>
-                    </CardForm>
-                </div>
 
-                <div>
-                    <CardForm 
-                        className="bg-gradient-to-r from-green-500 to-green-600 text-white border-0 shadow-sm quick-action-card cursor-pointer p-5 md:p-6"
-                        title="Planifier les cours"
-                    >
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <p className="text-green-100 text-sm">Créer et organiser</p>
-                            </div>
-                            <Calendar className="w-8 h-8 text-green-200" />
-                        </div>
-                    </CardForm>
-                </div>
-
-                <div>
-                    <CardForm 
-                        className="bg-gradient-to-r from-purple-500 to-purple-600 text-white border-0 shadow-sm quick-action-card cursor-pointer p-5 md:p-6"
-                        title="Générer des rapports"
-                    >
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <p className="text-purple-100 text-sm">Analyses et statistiques</p>
-                            </div>
-                            <TrendingUp className="w-8 h-8 text-purple-200" />
-                        </div>
-                    </CardForm>
-                </div>
             </div>
         </div>
     )

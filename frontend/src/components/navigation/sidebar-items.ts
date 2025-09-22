@@ -2,6 +2,8 @@ import {
   LayoutDashboard,
   Calendar as CalendarIcon,
   Fingerprint,
+  UsersRound,
+  UserRound,
   type LucideIcon,
 } from "lucide-react";
 
@@ -61,6 +63,23 @@ export const sidebarItems: NavGroup[] = [
       },
     ],
   },
+  {
+    id: 3,
+    label: "Lists",
+    items: [
+      {
+        title: "Etudiants ",
+        url: "/list_student",
+        icon: UsersRound,
+      },
+      {
+        title: "Responsables",
+        url: "/dashboard",
+        icon: UsersRound,
+      }
+    ],
+  },
+
 ];
 
 

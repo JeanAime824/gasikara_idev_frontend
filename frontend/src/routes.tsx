@@ -1,8 +1,10 @@
 import {createBrowserRouter} from "react-router-dom";
 import LoginPage from "./pages/login";
-import ProtectedRoute from "@/components/protected_route/ProtectedRoute.tsx";
+// import ProtectedRoute from "@/components/protected_route/ProtectedRoute.tsx";
 import Dashboard from "@/pages/dashboard";
 import Calendar from "@/pages/calendar";
+import ListStudentPage from "@/pages/list_student";
+import ProfilePage from "@/pages/profile";
 
 
 export const router = createBrowserRouter([
@@ -26,5 +28,13 @@ export const router = createBrowserRouter([
     {
         path: "/calendar",
         element: <Calendar/>
+    },
+    {
+        path: "/list_student",
+        element: <ListStudentPage/>
+    },
+    {
+        path: "/profile",
+        element: <ProfilePage/>
     }
 ])
